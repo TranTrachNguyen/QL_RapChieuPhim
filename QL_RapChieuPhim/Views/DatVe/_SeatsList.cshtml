@@ -1,0 +1,58 @@
+﻿@model IEnumerable<QL_RapChieuPhim.Models.Ghe>
+
+<div class="seats-list">
+    <h4>Danh sách ghế</h4>
+    <div class="seat-buttons">
+        @foreach (var seat in Model)
+        {
+            var buttonClass = seat.TrangThai ? "btn btn-secondary disabled" : "btn btn-success";
+            var buttonText = seat.TrangThai ? "Đã đặt" : $"Ghế {seat.SoGhe}";
+            var isDisabled = seat.TrangThai ? "disabled" : "";
+
+            <button type="button"
+                    class="@buttonClass"
+                    data-seat-id="@seat.MaGhe"
+                    data-seat-number="@seat.SoGhe"
+                    @isDisabled>
+                @buttonText
+            </button>
+        }
+    </div>
+
+    <!-- Hidden fields to store selected seats -->
+    <input type="hidden" id="selectedSeats" name="seatIds" />
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.seat-buttons button');
+            const selectedSeatsInput = document.getElementById('selectedSeats');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const seatId = this.getAttribute('data-seat-id');
+                    const seatNumber = this.getAttribute('data-seat-number');
+                    const isSelected = this.classList.contains('btn-warning');
+
+                    if (isSelected) {
+                        this.classList.remove('btn-warning');
+                        this.classList.add('btn-success');
+                        this.textContent = `Ghế ${seatNumber}`;
+                        this.removeAttribute('data-selected');
+                    } else {
+                        this.classList.remove('btn-success');
+                        this.classList.add('btn-warning');
+                        this.textContent = `Đã chọn ${seatNumber}`;
+                        this.setAttribute('data-selected', 'true');
+                    }
+
+                    // Update hidden input
+                    const selectedSeats = Array.from(document.querySelectorAll('.seat-buttons button[data-selected]'))
+                        .map(button => button.getAttribute('data-seat-id'));
+                    selectedSeatsInput.value = selectedSeats.join(',');
+                });
+            });
+        });
+    </script>
+}

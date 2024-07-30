@@ -1,0 +1,40 @@
+﻿@model IEnumerable<QL_RapChieuPhim.Models.SuatChieu>
+
+@{
+    ViewBag.Title = "Suất chiếu";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>Suất chiếu</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Thời gian chiếu</th>
+            <th>Màn hình chiếu</th>
+            <th>Số ghế</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var showTime in Model)
+        {
+            <tr>
+                @if (showTime.ThoiGianChieu.HasValue)
+                {
+                    <td>@showTime.ThoiGianChieu.Value.ToString("dd/MM/yyyy HH:mm")</td>
+                }
+                else
+                {
+                    <td>Chưa có thời gian</td>
+                }
+
+                <td>@showTime.ManHinhChieu.SoManHinh</td>
+                <td>@showTime.SoGheTrong</td> <!-- Hiển thị số ghế ở đây -->
+                <td>
+                    @Html.ActionLink("Chọn ghế", "SelectSeats", new { id = showTime.MaSuatChieu }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

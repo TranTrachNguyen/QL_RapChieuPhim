@@ -1,0 +1,9 @@
+﻿<!-- LoaiPhim.cshtml -->
+@model IEnumerable<QL_RapChieuPhim.Models.TheLoai>
+
+@foreach (var loai in Model)
+{
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("SPTheoLoaiPhim", "Phims", new { id = loai.MaTheLoai })">@loai.TenTheLoai</a>
+    </li>
+}

@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<!-- Liên kết đến file CSS -->
+<link rel="stylesheet" type="text/css" href="~/Content/css/cssDangKy.css">
+
+<form action="/Users/DangKy" method="post">
+    <div class="icon-container">
+        <img style="height: 190px; width: 190px" src="~/Images/dangky.jpg" alt="Avatar" class="avatar">
+        
+    </div>
+
+    <div class="container">
+        <label for="uname"><b>Họ tên khách hàng</b></label>
+        @Html.TextBox("TenKhachHang")
+        <p style="color: red">@ViewData["Loi1"]</p>
+
+        <label for="psw"><b>Email</b></label>
+        @Html.TextBox("Email")
+        <p style="color: red">@ViewData["Loi2"]</p>
+
+        <label for="psw"><b>Điện thoại</b></label>
+        @Html.TextBox("DienThoai")
+        <p style="color: red">@ViewData["Loi3"]</p>
+
+        <label for="psw"><b>Địa Chỉ</b></label>
+        @Html.TextBox("DiaChi")
+        <p style="color: red">@ViewData["Loi4"]</p>
+
+        <label for="psw"><b>Mật khẩu</b></label>
+        @Html.Password("MatKhau")
+        <p style="color: red">@ViewData["Loi5"]</p>
+
+        <label for="psw"><b>Nhập lại mật khẩu</b></label>
+        @Html.Password("MatKhauNhapLai")
+        <p style="color: red">@ViewData["Loi6"]</p>
+    </div>
+
+    <p style="color: red">@ViewBag.ThongBao</p>
+    <div class="button-container">
+        <button type="submit" name="Đăng Ký" class="signup-btn">Đăng Ký</button>
+        <a href="/Phims/Index" class="cancel-link">
+            <button type="button" class="cancelbtn">Cancel</button>
+        </a>
+    </div>
+</form>

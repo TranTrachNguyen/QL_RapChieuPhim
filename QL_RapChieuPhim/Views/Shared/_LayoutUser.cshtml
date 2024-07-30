@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" /> <!-- Ensure this is included -->
+</head>
+<body>
+    <div class="header-container">
+        <div class="header-content">
+            <div class="logo">
+                <a href="@Url.Action("Index", "Phims")">
+                    <img src="~/Images/logo.jpg" alt="Logo" />
+                </a>
+                <a class="navbar-brand" href="/Phims/Index">MOVIE</a>
+            </div>
+            <div class="auth-links">
+                @if (Session["Email"] == null)
+                {
+                    <a class="nav-link" href="@Url.Action("DangKy", "Users")">Đăng ký</a>
+                    <span class="separator">|</span>
+                    <a class="nav-link" href="@Url.Action("DangNhap", "Users")">Đăng nhập</a>
+                }
+                else
+                {
+                    <a class="nav-link" href="@Url.Action("DangXuat", "Users")">Đăng xuất</a>
+                }
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        @Html.Action("LoaiPhim", "Phims", null)
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <main role="main" class="col-md-12 px-md-4 mx-auto">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+</body>
+</html>

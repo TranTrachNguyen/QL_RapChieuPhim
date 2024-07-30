@@ -1,0 +1,27 @@
+﻿@model IEnumerable<QL_RapChieuPhim.Models.Phim>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="card-container">
+    @foreach (var phim in Model)
+    {
+        <div class="card">
+            <img src="~/Images/@phim.HinhAnh" class="card-img-top" alt="@phim.TenPhim" />
+            <div class="card-body">
+                <h5 class="card-title">@phim.TenPhim</h5>
+                <p class="card-text">@phim.TomTat</p>
+            </div>
+            <div class="row card-footer">
+                <div class="col-6">
+                    <a href="@Url.Action("Details", "Phims", new { id = phim.MaPhim })" class="btn btn-primary">Xem chi tiết</a>
+                </div>
+                <div class="col-6 text-end">
+                    <p>@phim.ThoiLuong phút</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/css/cssDangNhap.css">
+<form action="/Users/DangNhap" method="post">
+    <div class="imgcontainer">
+        <img style="height: 190px; width: 190px" src="~/Images/dangnhap.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+        <label for="uname"><b>Email</b></label>
+        @Html.TextBox("Email")
+        <p style="color: red">@ViewData["Loi2"]</p>
+        <label for="psw"><b>Mật khẩu</b></label>
+        @Html.Password("MatKhau")
+        <p style="color: red">@ViewData["Loi5"]</p>
+    </div>
+
+    <p style="color: red">@ViewBag.ThongBao</p>
+    <div class="button-container">
+        <a href="/Phims" class="cancel-link">
+            <button type="button" class="cancelbtn">Cancel</button>
+        </a>
+        <button type="submit" name="Đăng Nhập">Đăng nhập</button>
+    </div>
+</form>

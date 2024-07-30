@@ -1,0 +1,145 @@
+﻿@model QL_RapChieuPhim.Models.SuatChieu
+@{
+    var seats = (IEnumerable<QL_RapChieuPhim.Models.Ghe>)ViewBag.Seats;
+    ViewBag.Title = "Chọn ghế";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<style>
+    .seat-row-container {
+        margin-bottom: 20px;
+    }
+
+    .seat-row {
+        margin-bottom: 10px;
+    }
+
+    .seat-buttons {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+
+        .seat-buttons button {
+            width: 60px;
+            height: 40px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .seat-buttons .btn-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .seat-buttons .btn-warning {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .seat-buttons .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+    .book-button-container {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .book-button {
+        width: 100px;
+        height: 40px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .book-button:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<div class="seats-list">
+    <h4>Danh sách ghế</h4>
+
+    @* Tạo nhóm ghế theo dãy *@
+    <div class="seat-row-container">
+        @foreach (var row in seats.GroupBy(g => g.SoGhe.Substring(0, 1))) // Nhóm ghế theo hàng
+        {
+            <div class="seat-row">
+                <h5>Dãy @row.Key</h5>
+                <div class="seat-buttons">
+                    @foreach (var seat in row.OrderBy(s => s.SoGhe.Substring(1))) // Sắp xếp ghế theo số
+                    {
+                        var buttonClass = seat.TrangThai ? "btn btn-secondary disabled" : "btn btn-success";
+                        var buttonText = seat.TrangThai ? "Đã đặt" : $"Ghế {seat.SoGhe}";
+                        var isDisabled = seat.TrangThai ? "disabled" : "";
+
+                        <button type="button"
+                                class="@buttonClass"
+                                data-seat-id="@seat.MaGhe"
+                                data-seat-number="@seat.SoGhe"
+                                @isDisabled>
+                            @buttonText
+                        </button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Hidden fields to store selected seats -->
+    <input type="hidden" id="selectedSeats" name="seatIds" />
+
+    <div class="book-button-container">
+        <button type="button" class="book-button" id="bookButton">Đặt vé</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.seat-buttons button');
+        const selectedSeatsInput = document.getElementById('selectedSeats');
+        const bookButton = document.getElementById('bookButton');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const seatId = this.getAttribute('data-seat-id');
+                const seatNumber = this.getAttribute('data-seat-number');
+                const isSelected = this.classList.contains('btn-warning');
+
+                if (isSelected) {
+                    this.classList.remove('btn-warning');
+                    this.classList.add('btn-success');
+                    this.textContent = `Ghế ${seatNumber}`;
+                    this.removeAttribute('data-selected');
+                } else {
+                    this.classList.remove('btn-success');
+                    this.classList.add('btn-warning');
+                    this.textContent = `Đã chọn ${seatNumber}`;
+                    this.setAttribute('data-selected', 'true');
+                }
+
+                // Update hidden input
+                const selectedSeats = Array.from(document.querySelectorAll('.seat-buttons button[data-selected]'))
+                    .map(button => button.getAttribute('data-seat-id'));
+                selectedSeatsInput.value = selectedSeats.join(',');
+            });
+        });
+
+        bookButton.addEventListener('click', function () {
+            const selectedSeats = selectedSeatsInput.value;
+            if (selectedSeats) {
+                // Redirect to a booking action with selected seats
+                window.location.href = '@Url.Action("Confirmation", "DatVe")' + '?seatIds=' + selectedSeats;
+            } else {
+                alert('Vui lòng chọn ít nhất một ghế trước khi đặt vé.');
+            }
+        });
+    });
+</script>

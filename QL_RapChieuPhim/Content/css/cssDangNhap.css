@@ -1,0 +1,104 @@
+﻿body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    border: 3px solid #f1f1f1;
+    padding: 16px;
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước tổng thể */
+}
+
+input[type=text], input[type=password] {
+    width: 100%; /* Điều chỉnh chiều rộng của input */
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước */
+}
+
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: border-box; /* Đảm bảo button không bị co lại với padding */
+}
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+.cancelbtn {
+    background-color: #f44336;
+    width: 100%;
+}
+
+    .cancelbtn:hover {
+        background-color: darkred;
+    }
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.icon-container {
+    text-align: center;
+}
+
+.icon {
+    display: block;
+    margin: 0 auto;
+}
+
+.text {
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Căn chỉnh các button ra sát hai bên */
+    align-items: center;
+    padding: 16px;
+    background-color: #f1f1f1;
+    gap: 10px; /* Khoảng cách giữa các nút */
+}
+
+    .button-container button {
+        flex: 1; /* Đảm bảo hai button chiếm cùng một không gian */
+        width: 100%; /* Đảm bảo button chiếm toàn bộ chiều rộng */
+        margin: 0; /* Xóa margin để button khít với khung */
+        box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước */
+    }
+
+.cancel-link {
+    text-decoration: none;
+    flex: 1; /* Đảm bảo liên kết chiếm bằng nhau với button */
+}
+
+.signup-btn {
+    background-color: #04AA6D; /* Màu cho button Đăng Ký */
+}
+
+.cancelbtn {
+    background-color: #f44336; /* Màu cho button Cancel */
+}

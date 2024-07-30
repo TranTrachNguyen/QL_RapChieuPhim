@@ -1,0 +1,215 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    background-color: #FECE68;
+    color: #000;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+    .logo img {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-link {
+    color: #000; /* Màu chữ đen */
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+    .nav-link:hover {
+        color: #555; /* Màu chữ khi hover */
+    }
+
+.navbar {
+    margin: 0 auto;
+    background-color: #FECE68;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+main {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/*Index*/
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Khoảng cách giữa các card */
+    justify-content: center;
+    padding: 20px; /* Padding xung quanh card container */
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 300px; /* Kích thước cố định cho các card */
+    height: auto; /* Auto height to adjust based on content */
+}
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+.card-img-top {
+    width: 100%;
+    height: 500px; /* Tăng chiều cao cho hình ảnh */
+    object-fit: cover; /* Đảm bảo hình ảnh bao phủ toàn bộ vùng */
+    border-bottom: 1px solid #ddd;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-footer {
+    border-top: 1px solid #ddd;
+    padding: 1rem;
+    background-color: #f8f9fa;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.card-text {
+    color: #666;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    text-decoration: none; /* Bỏ gạch chân cho liên kết */
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+.text-end {
+    text-align: right; /* Canh lề phải cho phần tử */
+}
+
+.separator {
+    margin: 0 10px; /* Adjust the spacing around the separator as needed */
+    color: #000; /* Adjust the color as needed */
+}
+
+/*Details*/
+.details-page {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.img-container {
+    flex: 1;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .img-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+.details-container {
+    flex: 2;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+    .details-container h4 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .details-container p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: #666;
+    }
+
+    .details-container .highlight {
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    .details-container .bold {
+        font-weight: bold;
+    }
+
+#DatVe {
+    margin-top: 20px;
+}
+
+    #DatVe .btn {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+        #DatVe .btn:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }

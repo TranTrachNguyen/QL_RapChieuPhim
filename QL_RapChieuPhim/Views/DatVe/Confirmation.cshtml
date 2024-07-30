@@ -1,0 +1,31 @@
+﻿@model IEnumerable<QL_RapChieuPhim.Models.Ve>
+
+@{
+    ViewBag.Title = "Xác nhận đặt vé";
+}
+
+<h2>Xác nhận đặt vé</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên phim</th>
+            <th>Số ghế</th>
+            <th>Giá vé</th>
+            <th>Ngày đặt vé</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td>@ticket.SuatChieu.Phim.TenPhim</td>
+                <td>@ticket.SoGhe</td>
+                <td>@((decimal)ticket.Gia).ToString("C")</td>
+                <td>@ticket.NgayDatVe?.ToString("dd/MM/yyyy HH:mm") ?? "Chưa xác định"</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>Đặt vé thành công! Cảm ơn quý khách.</p>

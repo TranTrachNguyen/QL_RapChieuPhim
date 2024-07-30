@@ -1,0 +1,23 @@
+﻿@model QL_RapChieuPhim.Models.Phim
+
+@{
+    ViewBag.Title = "Chi Tiết Phim";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="details-page">
+    <div class="img-container">
+        <img src="~/Images/@Model.HinhAnh" alt="@Model.TenPhim" />
+    </div>
+    <div class="details-container">
+        <h4>@Model.TenPhim</h4>
+        <p>Thời lượng: <span class="highlight">@Model.ThoiLuong phút</span></p>
+        <p><span class="bold">Tóm tắt: </span>@Model.TomTat</p>
+        <div id="DatVe">
+            <!-- Liên kết đến hành động ShowTimes với tham số MaPhim -->
+            <a href="@Url.Action("ShowTimes", "DatVe", new { id = Model.MaPhim })" class="btn btn-primary">
+                Xem Suất Chiếu
+            </a>
+        </div>
+    </div>
+</div>
